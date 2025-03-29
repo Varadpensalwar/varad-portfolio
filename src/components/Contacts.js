@@ -1,65 +1,180 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react';
 import CustomHook from './CustomHook';
 
 function Contacts() {
   const [listContacts] = useState([
     {
       title: 'Phone Number',
-      value: '+91 - 8669580734'
+      value: '+91 - 8669580734',
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+      )
     },
     {
       title: 'Email',
       value: 'varadpensalwar@gmail.com',
-      isEmail: true
+      isEmail: true,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+        </svg>
+      )
     },
     {
-      title: 'github',
+      title: 'GitHub',
       value: 'https://github.com/Varadpensalwar',
-      isGithub: true
+      isGithub: true,
+      icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+          <path d="M9 18c-4.51 2-5-2-7-2"/>
+        </svg>
+      )
     }
-  ])
+  ]);
+
   const divs = useRef([]);
   const scrollTab = useRef();
   CustomHook(scrollTab, divs);
-  
+
   return (
-    <section className='contacts' ref={scrollTab}>
-      <div className="title" ref={(el) => el && divs.current.push(el)}>
-        This is my Contacts
-      </div>
-      <div className="des" ref={(el) => el && divs.current.push(el)}>
-        {/* 20 */}
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis quae veniam amet nesciunt voluptatibus quis consectetur consequatur quisquam harum.
-      </div>
-      <div className="list" ref={(el) => el && divs.current.push(el)}>
-        {
-          listContacts.map((value, key) => (
-            <div className='item' key={key}>
-              <h3>{value.title}</h3>
-              <div>
+    <section 
+      className='contact' 
+      ref={scrollTab}
+      style={{
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '40px 20px',
+        // No background color applied
+      }}
+    >
+      <div className="container" style={{
+        maxWidth: '1200px',
+        width: '100%',
+        textAlign: 'center'
+      }}>
+        <div 
+          className="title" 
+          ref={(el) => el && divs.current.push(el)}
+          style={{
+            fontSize: '3rem',
+            fontWeight: '700',
+            marginBottom: '30px',
+            color: '#7FB4C7',
+            textTransform: 'uppercase',
+            letterSpacing: '2px',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.1)'
+          }}
+        >
+          Get in Touch
+        </div>
+        
+        <div 
+          className="des" 
+          ref={(el) => el && divs.current.push(el)}
+          style={{
+            fontSize: '1.1rem',
+            maxWidth: '600px',
+            margin: '0 auto 50px',
+            lineHeight: '1.6',
+            color: '#7A7A7A'
+          }}
+        >
+          Let's collaborate! Reach out through any of these channels:
+        </div>
+        
+        <div 
+          className="list" 
+          ref={(el) => el && divs.current.push(el)}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '40px',
+            padding: '20px'
+          }}
+        >
+          {listContacts.map((value, key) => (
+            <div 
+              className='item' 
+              key={key} 
+              style={{
+                padding: '30px',
+                transition: 'all 0.3s ease',
+                border: '1px solid #e0e0e0', // Subtle border for definition
+                borderRadius: '12px',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.1)', // Shadow for depth
+                backgroundColor: 'transparent' // No background color
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-5px)';
+                e.currentTarget.style.boxShadow = '0 12px 40px rgba(0,0,0,0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 8px 32px rgba(0,0,0,0.1)';
+              }}
+            >
+              <div style={{
+                marginBottom: '20px',
+                color: '#7FB4C7'
+              }}>
+                {value.icon}
+              </div>
+
+              <h3 style={{
+                fontSize: '1.3rem',
+                marginBottom: '15px',
+                color: '#2d2d2d'
+              }}>
+                {value.title}
+              </h3>
+
+              <div style={{ fontSize: '1.1rem' }}>
                 {value.isEmail ? (
-                  <a href={`mailto:${value.value}`} title={value.value}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-                      <path d="M22 7l-10 5-10-5"></path>
-                    </svg>
+                  <a 
+                    href={`mailto:${value.value}`} 
+                    style={{
+                      color: '#2d2d2d',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px'
+                    }}
+                  >
+                    {value.value}
                   </a>
                 ) : value.isGithub ? (
-                  <a href={value.value} target="_blank" rel="noopener noreferrer" title={value.value}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
+                  <a 
+                    href={value.value} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    style={{
+                      color: '#2d2d2d',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px'
+                    }}
+                  >
+                    @Varadpensalwar
                   </a>
                 ) : (
-                  value.value
+                  <div style={{ color: '#2d2d2d' }}>
+                    {value.value}
+                  </div>
                 )}
               </div>
             </div>
-          ))
-        }
+          ))}
+        </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Contacts
+export default Contacts;
