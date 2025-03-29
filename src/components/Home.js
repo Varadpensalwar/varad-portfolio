@@ -1,12 +1,10 @@
 import React, { useRef } from 'react' 
 import CustomHook from './CustomHook';
-
 function Home() {
-  const scrollTab = useRef();
-  const divs = useRef([]);
-  CustomHook(scrollTab, divs);
+const scrollTab = useRef();
+CustomHook(scrollTab);
 
-  return (
+return (
     <section ref={scrollTab} className='home'>
         <div className="content">
             <div className="name">
@@ -33,7 +31,7 @@ function Home() {
             </div>
         </div>
     </section>
-  )
+    )
 }
 
 export default Home
