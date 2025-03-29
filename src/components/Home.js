@@ -24,8 +24,8 @@ return (
                 <img src="/avatar.jpg" alt="" />
                 <div className="info">
                     <div>Web Devloper</div>
-                    <div>VietNamese</div>
-                    <div>03/12</div>
+                    <div>Indian</div>
+                    <div>SGU</div>
                     <div>Male</div>
                 </div>
             </div>
