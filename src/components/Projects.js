@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPersonCircleQuestion, faEarthAmericas } from '@fortawesome/free-solid-svg-icons';
 import CustomHook from './CustomHook';
-
 function Projects() {
 const [listProjects] = useState([
   {

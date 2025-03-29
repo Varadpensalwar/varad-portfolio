@@ -4,7 +4,7 @@ import { changeTabActive } from '../redux/actions';
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const NavBar = ({activeTab}) => {
-  const [listNav] = useState(["home", "skills", "projects", "contacts"]);
+  const [listNav] = useState(["Home", "Skills", "Projects", "Contact"]);
   const dispatch = useDispatch();
   const changeTab = (value) => {
     dispatch(changeTabActive(value));
