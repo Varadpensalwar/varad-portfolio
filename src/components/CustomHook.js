@@ -7,31 +7,53 @@ const CustomHook = (refTab = null, refList = null) => {
   const activeTab = useSelector(state => state.activeTab);
 
   useEffect(() => {
-    if (scrollTab?.current && scrollTab.current.classList.contains(activeTab)) {
-      scrollTab.current.scrollIntoView({ behavior: 'smooth' });
+    // Check if we have a valid tab reference
+    if (scrollTab?.current) {
+      // Extract the section's class name to compare with active tab
+      const sectionClassName = scrollTab.current.className.split(' ')[0];
+      
+      // Log for debugging
+      console.log("Active Tab:", activeTab);
+      console.log("Section Class:", sectionClassName);
+      
+      // Check if this tab should be active (case-insensitive comparison)
+      if (activeTab.toLowerCase() === sectionClassName.toLowerCase()) {
+        console.log("Scrolling to section:", sectionClassName);
+        scrollTab.current.scrollIntoView({ behavior: 'smooth' });
+      }
     }
+
+    // Animation logic
     if (divs !== null && divs.current) {
       divs.current.forEach((div) => {
-        div.classList.add('animation');
+        if (div) {
+          div.classList.add('animation');
+        }
       });
+
       const handleScroll = () => {
         const scrollPosition = window.scrollY;
         divs.current.forEach((div) => {
-          const offsetTop = div.getBoundingClientRect().top + scrollPosition;
-          if (scrollPosition >= offsetTop - window.innerHeight / 1.5) {
-            div.classList.add('active');
-          } else {
-            div.classList.remove('active');
+          if (div) {
+            const offsetTop = div.getBoundingClientRect().top + scrollPosition;
+            if (scrollPosition >= offsetTop - window.innerHeight / 1.5) {
+              div.classList.add('active');
+            } else {
+              div.classList.remove('active');
+            }
           }
         });
       };
+
+      // Trigger the scroll handler once to set initial state
+      handleScroll();
+      
       window.addEventListener('scroll', handleScroll);
       
       // Cleanup the event listener on unmount
       return () => window.removeEventListener('scroll', handleScroll);
     }
-  }, [activeTab, scrollTab, divs]); // Added missing dependencies
-
+  }, [activeTab, scrollTab, divs]);
 };
 
 export default CustomHook;
