@@ -20,16 +20,28 @@ return (
             </a>
         </div>
         <div className="avatar">
-            <div className="card">
-                <img src="/avatar.jpg" alt="" />
-                <div className="info">
-                    <div>Web Devloper</div>
-                    <div>VietNamese</div>
-                    <div>03/12</div>
-                    <div>Male</div>
+    <div className="card">
+        <img src="Porsche 911.jpg" alt="" className="primary-image" />
+        <img src="Porsche.jpg" alt="" className="secondary-image" />
+        <div className="content">
+            <h2>Varad Pensalwar</h2>
+            <div className="social">
+                <div className="item">
+                    <div className="title">Web</div>
+                    <div className="count">developer</div>
+                </div>
+                <div className="item">
+                    <div className="title">Leetcode</div>
+                    <div className="count">150 Days</div>
+                </div>
+                <div className="item">
+                    <div className="title">Github</div>
+                    <div className="count">200 Contribution</div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
     </section>
     )
 }
