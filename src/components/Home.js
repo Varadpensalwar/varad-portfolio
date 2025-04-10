@@ -22,7 +22,7 @@ return (
         <div className="avatar">
     <div className="card">
         <img src="Me2.jpg" alt="" className="primary-image" />
-        <img src="Me.jpg" alt="" className="secondary-image" />
+        <img src="Me2.jpg" alt="" className="secondary-image" />
         <div className="content">
             <h2>Varad Pensalwar</h2>
             <div className="social">
